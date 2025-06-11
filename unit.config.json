@@ -1,0 +1,29 @@
+{
+    "access_log": "/dev/stdout",
+    "listeners": {
+        "*:80": {
+            "pass": "applications/adminer",
+            "forwarded": {
+                "client_ip": "X-Forwarded-For",
+                "protocol": "X-Forwarded-Proto",
+                "source": [
+                    "10.0.0.0/8"
+                ]
+            }
+        }
+    },
+    "settings": {
+        "http": {
+            "max_body_size": 1073741824,
+            "send_timeout": 600,
+            "body_read_timeout": 600
+        }
+    },
+    "applications": {
+        "adminer": {
+            "type": "php",
+            "root": "/app/",
+            "script": "adminer.php"
+        }
+    }
+}
