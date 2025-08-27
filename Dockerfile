@@ -8,7 +8,7 @@ ARG ADMINER_VERSION=5.3.0
 RUN mkdir -p /app && chown unit:unit /app
 
 # Install wget, download Adminer, then clean up
-RUN docker-php-ext-install mysqli pdo_mysql
+RUN docker-php-ext-install mysqli pdo_mysql pgsql pdo_pgsql
 RUN apt-get update && apt-get install -y wget && \
     # It's best to use a direct, version-locked URL if available for adminer-5.3.0.php
     # The official site's "latest-en.php" might not always point to 5.3.0 in the future.

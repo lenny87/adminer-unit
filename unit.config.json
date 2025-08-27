@@ -2,7 +2,7 @@
     "access_log": "/dev/stdout",
     "listeners": {
         "*:80": {
-            "pass": "applications/adminer",
+            "pass": "routes/main",
             "forwarded": {
                 "client_ip": "X-Forwarded-For",
                 "protocol": "X-Forwarded-Proto",
@@ -11,6 +11,23 @@
                 ]
             }
         }
+    },
+    "routes": {
+        "main": [
+            {
+                "match": {
+                    "uri": "/healthz"
+                },
+                "action": {
+                    "return": 200
+                }
+            },
+            {
+                "action": {
+                    "pass": "applications/adminer"
+                }
+            }
+        ]
     },
     "settings": {
         "http": {
