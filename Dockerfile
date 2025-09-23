@@ -2,7 +2,7 @@
 FROM unit:php8.4
 
 # Set Adminer version
-ARG ADMINER_VERSION=5.3.0
+ARG ADMINER_VERSION=5.4.0
 
 # Create application directory and set permissions
 RUN mkdir -p /app && chown unit:unit /app
